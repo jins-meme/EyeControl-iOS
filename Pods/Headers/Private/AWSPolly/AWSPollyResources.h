@@ -1,0 +1,1 @@
+../../../AWSPolly/AWSPolly/AWSPollyResources.h

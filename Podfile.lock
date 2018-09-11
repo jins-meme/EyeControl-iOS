@@ -1,0 +1,24 @@
+PODS:
+  - AWSCore (2.6.27)
+  - AWSPolly (2.6.27):
+    - AWSCore (= 2.6.27)
+  - SVProgressHUD (2.1.2)
+
+DEPENDENCIES:
+  - AWSPolly
+  - SVProgressHUD
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AWSCore
+    - AWSPolly
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  AWSCore: 87e3711bc0d7e055f9d85b6ef272d7f91f2e0796
+  AWSPolly: d05f287867d3f57f2ebafe219641393a6c988263
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+
+PODFILE CHECKSUM: 9b85434d39bd31d864500da619a2f5799c7f5d59
+
+COCOAPODS: 1.5.3

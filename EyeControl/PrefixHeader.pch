@@ -1,0 +1,38 @@
+//
+//  PrefixHeader.pch
+//  EyeControl
+//
+//  Created by Celleus on 2017/08/08.
+//  Copyright © 2017年 celleus. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <MEMELib/MEMELib.h>
+#import "CLSSliderView.h"
+#import "SVProgressHUD.h"
+
+#import "AppDelegate.h"
+#import "ViewController.h"
+
+#import "MEMEManager.h"
+
+#import "Common.h"
+#import "Const.h"
+
+#import "EyeMoveManager.h"
+#import "NeckManager.h"
+
+#import "CheckView.h"
+
+#import "UIViewController+Helper.h"
+#import "UIImageView+Helper.h"
+
+#endif /* PrefixHeader_pch */
+
+#ifdef DEBUG
+    #define DLog(fmt, ...) NSLog((@"%s [Line %d]" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+    #define DLog(...)
+#endif
