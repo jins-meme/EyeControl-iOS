@@ -5,6 +5,10 @@
 JINS MEMEから取得できるデータを元に、視線移動や首振りによって以下の機能をハンズフリーで操作するデモアプリです。
 アプリは[JINS MEME Eye Control](https://itunes.apple.com/jp/app/jins-meme-eye-control/id1407318434?mt=8)からダウンロードできます。
 
+ハンズフリー操作のライブラリのみを使用したい場合は以下のレポジトリをご利用ください。
+[視線操作](https://github.com/jins-meme/JinsMemeLib-EyeControl-iOS)
+[首振り操作](https://github.com/jins-meme/JinsMemeLib-HeadControl-iOS)
+
 ## 使い方
 
 ### 1.「アプリID」と「アプリSecret」取得し設定する
