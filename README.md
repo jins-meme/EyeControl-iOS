@@ -24,7 +24,7 @@ JINS MEMEから取得できるデータを元に、視線移動や首振りに�
 
 #### 2-1.AWS_POOL_ID の設定
 
-テスキスト読み上げ機能はAmazon Pollyを使用しています。利用のための「AWS_POOL_ID」を取得してください。
+テキスト読み上げ機能はAmazon Pollyを使用しています。利用のための「AWS_POOL_ID」を取得してください。
 
 取得した「AWS_POOL_ID」は
 `Const.h`
