@@ -2,14 +2,18 @@
 
 ## 概要
 
-JINS MEMEから取得できるデータを元に、視線移動や首振りによってアプリを操作することを可能にしたアプリです。
+JINS MEMEから取得できるデータを元に、視線移動や首振りによって以下の機能をハンズフリーで操作するデモアプリです。
+アプリは[JINS MEME Eye Control](https://itunes.apple.com/jp/app/jins-meme-eye-control/id1407318434?mt=8)からダウンロードできます。
 
+ハンズフリー操作のライブラリのみを使用したい場合は以下のレポジトリをご利用ください。
+- [視線操作(JinsMemeLib-EyeControl-iOS)](https://github.com/jins-meme/JinsMemeLib-EyeControl-iOS)
+- [首振り操作(JinsMemeLib-HeadControl-iOS)](https://github.com/jins-meme/JinsMemeLib-HeadControl-iOS)
 
 ## 使い方
 
 ### 1.「アプリID」と「アプリSecret」取得し設定する
 
-[JIN MEME DEVELOPPER](https://jins-meme.com/ja/developers/)に登録し、アプリ作成を行い「アプリID」と「アプリSecret」を取得してください。
+[JINSMEME DEVELOPER SUPPORT](https://jins-meme.com/ja/developers/)で登録・アプリ作成を行い「アプリID」と「アプリSecret」を取得してください。
 取得した「アプリID」と「アプリSecret」は
 `Const.h`
 の中にある下記の2行に設定してください。
@@ -22,11 +26,11 @@ JINS MEMEから取得できるデータを元に、視線移動や首振りに�
 
 ### 2.パネル機能のテキスト読み上げ機能の設定（任意）
 
-#### 2-1.PoolIDの設定
+#### 2-1.AWS_POOL_ID の設定
 
-AWSよりテスキスト読み上げ機能用の「PoolID」を取得してください。
+テキスト読み上げ機能はAmazon Pollyを使用しています。利用のための「AWS_POOL_ID」を取得してください。
 
-取得した「PoolID」は
+取得した「AWS_POOL_ID」は
 `Const.h`
 の中にある下記に設定してください。
 
@@ -38,11 +42,11 @@ AWSよりテスキスト読み上げ機能用の「PoolID」を取得してく�
 
 `PanelViewController.m`
 
-の中にあるテスキスト読み上げ機能のリージョンを変更します。
+の中にあるテキスト読み上げ機能のリージョンを変更します。
 
 `- (void)speach:(NSString *)text{}`
 
-上記メソッドの中にある
+上記メソッドの中にある下記2箇所のリージョンを「AWS_POOL_ID」を取得した時に設定したリージョンに変更します。
 
 ~~~~
 AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionAPNortheast1 ← ここ
@@ -53,9 +57,6 @@ AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProv
 AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 ← ここ
                                                                          credentialsProvider:credentialsProvider];
 ~~~~
-
-上記2箇所のリージョンを「PoolID」を取得した時に設定したリージョンに変更します。
-
 
 ## ライセンス
 
