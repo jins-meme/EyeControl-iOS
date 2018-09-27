@@ -28,6 +28,7 @@
 
 #import "UIViewController+Helper.h"
 #import "UIImageView+Helper.h"
+#import "UINavigationController+Helper.h"
 
 #endif /* PrefixHeader_pch */
 

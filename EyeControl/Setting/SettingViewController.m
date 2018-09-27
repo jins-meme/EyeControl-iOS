@@ -19,6 +19,7 @@
     CLSSliderView *silderEMO;
     CLSSliderView *silderBC;
     CLSSliderView *silderNO;
+    UISwitch *readSwitch;
 }
 
 @end
@@ -59,7 +60,7 @@
                                                                        sectionMargin,
                                                                       self.view.frame.size.width - 10*2,
                                                                       20)];
-    tutorialLaebl.text = @"チュートリアル";
+    tutorialLaebl.text = NSLocalizedString(@"チュートリアル",nil);
     tutorialLaebl.textColor = [UIColor whiteColor];
     tutorialLaebl.font = [UIFont boldSystemFontOfSize:14];
     [scrollView addSubview:tutorialLaebl];
@@ -94,7 +95,7 @@
     [scrollView addSubview:tutorialModeButton];
     
     UILabel *tutorialModeButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, tutorialModeButton.frame.size.height)];
-    tutorialModeButtonLabel.text = @"モードの説明";
+    tutorialModeButtonLabel.text = NSLocalizedString(@"モードの説明",nil);
     tutorialModeButtonLabel.textColor = [UIColor lightGrayColor];
     [tutorialModeButton addSubview:tutorialModeButtonLabel];
     
@@ -118,7 +119,7 @@
                                                                       line3.frame.origin.y + line3.frame.size.height + sectionMargin,
                                                                       self.view.frame.size.width - 10*2,
                                                                       20)];
-    eyeModeLabel.text = @"視線の設定";
+    eyeModeLabel.text = NSLocalizedString(@"視線の設定",nil);
     eyeModeLabel.textColor = [UIColor whiteColor];
     eyeModeLabel.font = [UIFont boldSystemFontOfSize:14];
     [scrollView addSubview:eyeModeLabel];
@@ -129,9 +130,9 @@
     
     UILabel *eyeSwitchLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,
                                                                         line4.frame.origin.y + line4.frame.size.height,
-                                                                        self.view.frame.size.width/4,
+                                                                        200,
                                                                         switchSize)];
-    eyeSwitchLabel.text = @"視線モード";
+    eyeSwitchLabel.text = NSLocalizedString(@"視線モード",nil);
     eyeSwitchLabel.textColor = [UIColor lightGrayColor];
     [scrollView addSubview:eyeSwitchLabel];
     
@@ -147,7 +148,10 @@
     line5.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     [scrollView addSubview:line5];
     
-    segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"モード1",@"モード2",@"モード3",@"モード4"]];
+    segmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"モード1",nil),
+                                                                   NSLocalizedString(@"モード2",nil),
+                                                                   NSLocalizedString(@"モード3",nil),
+                                                                   NSLocalizedString(@"モード4",nil)]];
     segmentedControl.frame = CGRectMake(10,
                                         line5.frame.origin.y + line5.frame.size.height + 10,
                                         self.view.frame.size.width - 10*2,
@@ -166,7 +170,8 @@
                                                                 line6.frame.origin.y + line6.frame.size.height,
                                                                 self.view.frame.size.width,
                                                                 sliderSize)];
-    silderEMO.titleLabel.text = @"連続と判定する間隔";
+    silderEMO.titleLabel.text = NSLocalizedString(@"連続と判定する間隔",nil);
+    silderEMO.titleLabel.numberOfLines = 2;
     silderEMO.titleLabel.textColor = [UIColor lightGrayColor];
     silderEMO.valueLabel.text = [NSString stringWithFormat:@"%0.2f",[EyeMoveManager sharedInstance].timeDifRL];
     silderEMO.valueLabel.textColor = [UIColor lightGrayColor];
@@ -188,7 +193,7 @@
                                                                       line7.frame.origin.y + line7.frame.size.height + sectionMargin,
                                                                       self.view.frame.size.width - 10*2,
                                                                       20)];
-    neckModeLabel.text = @"首振りの設定";
+    neckModeLabel.text = NSLocalizedString(@"首振りの設定",nil);
     neckModeLabel.textColor = [UIColor whiteColor];
     neckModeLabel.font = [UIFont boldSystemFontOfSize:14];
     [scrollView addSubview:neckModeLabel];
@@ -201,7 +206,7 @@
                                                                          line8.frame.origin.y + line8.frame.size.height,
                                                                          200,
                                                                          switchSize)];
-    neckSwitchLabel.text = @"首振りモード";
+    neckSwitchLabel.text = NSLocalizedString(@"首振りモード",nil);
     neckSwitchLabel.textColor = [UIColor lightGrayColor];
     [scrollView addSubview:neckSwitchLabel];
     
@@ -221,7 +226,8 @@
                                                                line9.frame.origin.y + line9.frame.size.height,
                                                                self.view.frame.size.width,
                                                                sliderSize)];
-    silderNO.titleLabel.text = @"連続と判定する間隔";
+    silderNO.titleLabel.text = NSLocalizedString(@"連続と判定する間隔",nil);
+    silderNO.titleLabel.numberOfLines = 2;
     silderNO.titleLabel.textColor = [UIColor lightGrayColor];
     silderNO.valueLabel.text = [NSString stringWithFormat:@"%0.2f",[NeckManager sharedInstance].yawPeackTimeDif];
     silderNO.valueLabel.textColor = [UIColor lightGrayColor];
@@ -243,7 +249,7 @@
                                                                        line10.frame.origin.y + line10.frame.size.height + sectionMargin,
                                                                        self.view.frame.size.width - 10*2,
                                                                        20)];
-    blinkLabel.text = @"まばたきの設定";
+    blinkLabel.text = NSLocalizedString(@"まばたきの設定",nil);
     blinkLabel.textColor = [UIColor whiteColor];
     blinkLabel.font = [UIFont boldSystemFontOfSize:14];
     [scrollView addSubview:blinkLabel];
@@ -256,7 +262,8 @@
                                                                line11.frame.origin.y + line11.frame.size.height,
                                                                self.view.frame.size.width,
                                                                sliderSize)];
-    silderBC.titleLabel.text = @"連続と判定する間隔";
+    silderBC.titleLabel.text = NSLocalizedString(@"連続と判定する間隔",nil);
+    silderBC.titleLabel.numberOfLines = 2;
     silderBC.titleLabel.textColor = [UIColor lightGrayColor];
     silderBC.valueLabel.text = [NSString stringWithFormat:@"%0.2f",[[Common getUserDefaultsForKey:Blink_EMC2] floatValue]];
     silderBC.valueLabel.textColor = [UIColor lightGrayColor];
@@ -272,7 +279,42 @@
     line12.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     [scrollView addSubview:line12];
     
-    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, line12.frame.origin.y + line12.frame.size.height + sectionMargin);
+    
+    // 首振り
+    UILabel *readModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,
+                                                                       line12.frame.origin.y + line12.frame.size.height + sectionMargin,
+                                                                       self.view.frame.size.width - 10*2,
+                                                                       20)];
+    readModeLabel.text = NSLocalizedString(@"パネルの設定",nil);
+    readModeLabel.textColor = [UIColor whiteColor];
+    readModeLabel.font = [UIFont boldSystemFontOfSize:14];
+    [scrollView addSubview:readModeLabel];
+    
+    UIView *line13 = [[UIView alloc] initWithFrame:CGRectMake(0, readModeLabel.frame.origin.y + readModeLabel.frame.size.height, self.view.frame.size.width, 1)];
+    line13.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    [scrollView addSubview:line13];
+    
+    UILabel *readSwitchLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,
+                                                                         line13.frame.origin.y + line13.frame.size.height,
+                                                                         200,
+                                                                         switchSize)];
+    readSwitchLabel.text = NSLocalizedString(@"パネルの読み上げ",nil);
+    readSwitchLabel.textColor = [UIColor lightGrayColor];
+    [scrollView addSubview:readSwitchLabel];
+    
+    readSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,
+                                                            line13.frame.origin.y + line13.frame.size.height + (switchSize-30)/2,
+                                                            self.view.frame.size.width/4,
+                                                            switchSize)];
+    readSwitch.on = [[Common getUserDefaultsForKey:READ_SWITCH] boolValue];
+    [readSwitch addTarget:self action:@selector(readSwitch:) forControlEvents:UIControlEventValueChanged];
+    [scrollView addSubview:readSwitch];
+    
+    UIView *line14 = [[UIView alloc] initWithFrame:CGRectMake(0, readSwitchLabel.frame.origin.y + readSwitchLabel.frame.size.height, self.view.frame.size.width, 1)];
+    line14.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    [scrollView addSubview:line14];
+    
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, line14.frame.origin.y + line14.frame.size.height + sectionMargin);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -291,6 +333,11 @@
     DLog(@"neckSwitch");
     [Common setUserDefaults:[NSNumber numberWithBool:sw.on] forKey:NECK_SWITCH];
     silderNO.slider.enabled = sw.on;
+}
+
+- (void)readSwitch:(UISwitch *)sw {
+    DLog(@"readSwitch");
+    [Common setUserDefaults:[NSNumber numberWithBool:sw.on] forKey:READ_SWITCH];
 }
 
 - (void)segmentedControl:(UISegmentedControl *)sc {

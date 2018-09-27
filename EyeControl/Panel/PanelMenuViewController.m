@@ -14,7 +14,6 @@
 
 @interface PanelMenuViewController () <MEMEManagerRealTimeModeDataDelegate,UIScrollViewDelegate,EyeMoveManagerDelegate,NeckManagerDelegate> {
     BlinkShutterViewController *blinkShutterViewController;
-    PDFViewController *pdfViewController;
     PanelViewController *panelViewController;
 
     UIScrollView *scrollView;
@@ -32,7 +31,6 @@
     [super loadView];
     
     blinkShutterViewController = [[BlinkShutterViewController alloc] init];
-    pdfViewController = [[PDFViewController alloc] init];
     panelViewController = [[PanelViewController alloc] init];
 }
 
@@ -84,7 +82,7 @@
             label.textColor = [Common colorWithHex:@"#ffffff"];
         }
         else if (i == 1) {
-            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: @"まばたきシャッター"];
+            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: NSLocalizedString( @"まばたきシャッター",nil)];
             [attributedText addAttribute:NSKernAttributeName
                                    value:[NSNumber numberWithFloat:5]
                                    range:NSMakeRange(0, attributedText.length)];
@@ -92,7 +90,7 @@
             label.textColor = [Common colorWithHex:@"#52d0b0"];
         }
         else if (i == 2) {
-            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: @"PDFビューワー"];
+            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: NSLocalizedString( @"PDFビューワー",nil)];
             [attributedText addAttribute:NSKernAttributeName
                                    value:[NSNumber numberWithFloat:5]
                                    range:NSMakeRange(0, attributedText.length)];
@@ -100,7 +98,7 @@
             label.textColor = [Common colorWithHex:@"#52d0b0"];
         }
         else if (i == 3) {
-            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: @"メッセージパネル"];
+            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: NSLocalizedString( @"メッセージパネル",nil)];
             [attributedText addAttribute:NSKernAttributeName
                                    value:[NSNumber numberWithFloat:5]
                                    range:NSMakeRange(0, attributedText.length)];
@@ -112,7 +110,7 @@
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 20 + 44 + 80, self.view.frame.size.width - 10*2, 20)];
     label.textColor = [UIColor whiteColor];
-    label.text = @"左右の視線移動で選択し、まばたき2回で決定。";
+    label.text = NSLocalizedString(@"左右の視線移動で選択し、まばたき2回で決定。",nil);
     label.font = [UIFont systemFontOfSize:16.0];
     label.textAlignment = NSTextAlignmentCenter;
     label.minimumScaleFactor = 0.5;
@@ -148,10 +146,26 @@
     DLog(@"viewWillAppear");
     
     if (self.pdfURL != nil) {
+        PDFViewController *pdfViewController = [[PDFViewController alloc] init];
         pdfViewController.pdfURL = self.pdfURL;
         [self.navigationController pushViewController:pdfViewController animated:YES];
         self.pdfURL = nil;
     }
+}
+
+- (BOOL)shouldAutorotate {
+    DLog(@"shouldAutorotate")
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    DLog(@"supportedInterfaceOrientations");
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    DLog(@"preferredInterfaceOrientationForPresentation");
+    return UIInterfaceOrientationPortrait;
 }
 
 - (void)back {
@@ -166,6 +180,7 @@
 
 - (void)pdf {
     DLog(@"pdf")
+    PDFViewController *pdfViewController = [[PDFViewController alloc] init];
     [self.navigationController pushViewController:pdfViewController animated:YES];
 }
 

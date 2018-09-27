@@ -55,7 +55,7 @@
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
     if (peripheral.state == CBPeripheralManagerStatePoweredOff) {
         DLog(@"bluetooth OFF");
-        [self alert:@"端末のBluetoothをオンにしてください" message:@""];
+        [self alert:NSLocalizedString(@"端末のBluetoothをオンにしてください",nil) message:@""];
     }
     else if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
         DLog(@"bluetooth ON");
@@ -72,7 +72,7 @@
     
     self.view.backgroundColor = [Common colorWithHex:@"#3a4e61"];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"閉じる"
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"閉じる",nil)
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
                                                                             action:@selector(close)];
@@ -93,7 +93,7 @@
                                                            powerImageView.frame.origin.y + powerImageView.frame.size.height + 40,
                                                            self.view.frame.size.width,
                                                            20)];
-    powerLabel.text = @"青点滅するまで電源ボタンを長押ししてください";
+    powerLabel.text = NSLocalizedString(@"青点滅するまで電源ボタンを長押ししてください",nil);
     powerLabel.font = [UIFont boldSystemFontOfSize:13];
     powerLabel.textAlignment = NSTextAlignmentCenter;
     powerLabel.textColor = [UIColor whiteColor];
@@ -113,7 +113,7 @@
                                                             statusImageView.frame.origin.y + statusImageView.frame.size.height + 40,
                                                             self.view.frame.size.width,
                                                             20)];
-    memeFoundLabel.text = @"接続するJINS MEMEを選択してください";
+    memeFoundLabel.text = NSLocalizedString(@"接続するJINS MEMEを選択してください",nil);
     memeFoundLabel.font = [UIFont boldSystemFontOfSize:13];
     memeFoundLabel.textAlignment = NSTextAlignmentCenter;
     memeFoundLabel.textColor = [UIColor whiteColor];
@@ -129,7 +129,7 @@
     tableView.hidden = YES;
     
     retryButton = [[UIButton alloc] init];
-    [retryButton setTitle:@"もう一度接続" forState:UIControlStateNormal];
+    [retryButton setTitle:NSLocalizedString(@"もう一度接続",nil) forState:UIControlStateNormal];
     [retryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [retryButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     retryButton.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -141,7 +141,7 @@
                                                                 self.view.frame.size.height - (24 + safeAreaBottom),
                                                                 self.view.frame.size.width-20*2,
                                                                 24)];
-    [notFoundButton setTitle:@"見つからなかった場合" forState:UIControlStateNormal];
+    [notFoundButton setTitle:NSLocalizedString(@"見つからなかった場合",nil) forState:UIControlStateNormal];
     [notFoundButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [notFoundButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     notFoundButton.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -153,7 +153,7 @@
                                                              statusImageView.frame.origin.y + statusImageView.frame.size.height + 40,
                                                              self.view.frame.size.width,
                                                              20)];
-    connectLabel.text = @"接続中のJINS MEME";
+    connectLabel.text = NSLocalizedString(@"接続中のJINS MEME",nil);
     connectLabel.font = [UIFont boldSystemFontOfSize:13];
     connectLabel.textAlignment = NSTextAlignmentCenter;
     connectLabel.textColor = [UIColor whiteColor];
@@ -177,7 +177,7 @@
                                                                   connectingDeviceLabel.frame.origin.y + connectingDeviceLabel.frame.size.height + 20,
                                                                   self.view.frame.size.width-20*2,
                                                                   24)];
-    [disConnectButton setTitle:@"JINS MEMEと接続解除する" forState:UIControlStateNormal];
+    [disConnectButton setTitle:NSLocalizedString(@"JINS MEMEと接続解除する",nil) forState:UIControlStateNormal];
     [disConnectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [disConnectButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     disConnectButton.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -191,7 +191,7 @@
                                                              self.view.frame.size.width,
                                                              50)];
     finishButton.backgroundColor = [UIColor whiteColor];
-    [finishButton setTitle:@"完了" forState:UIControlStateNormal];
+    [finishButton setTitle:NSLocalizedString(@"完了",nil) forState:UIControlStateNormal];
     [finishButton setTitleColor:[Common colorWithHex:@"#3a4e61"] forState:UIControlStateNormal];
     finishButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     [finishButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
@@ -367,8 +367,8 @@
     DLog(@"connectError");
     [SVProgressHUD dismiss];
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"エラー"
-                                                                             message:@"MEMEとの接続に失敗しました。MEMEが接続可能な状態かお確かめください。"
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"エラー",nil)
+                                                                             message:NSLocalizedString(@"MEMEとの接続に失敗しました。MEMEが接続可能な状態かお確かめください。",nil)
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         
@@ -388,7 +388,7 @@
     
     [self statusMEMEScan];
     
-    [self alert:@"MEMEとの接続が切れました" message:@""];
+    [self alert:NSLocalizedString(@"MEMEとの接続が切れました",nil) message:@""];
 }
 
 //**************************************************
@@ -453,11 +453,11 @@
         MEMEPeripheral *memePeripheral = [[MEMEManager sharedInstance].peripherals objectAtIndex: indexPath.row];
         CBPeripheral *peripheral = memePeripheral.pripheral;
         
-        [SVProgressHUD showWithStatus:@"接続中" maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"接続中",nil) maskType:SVProgressHUDMaskTypeBlack];
         [[MEMEManager sharedInstance] connectPeripheral:peripheral];
     }
     else {
-        [self alert:@"既にMEMEと接続しています" message:@""];
+        [self alert:NSLocalizedString(@"既にMEMEと接続しています",nil) message:@""];
         [self statusConnected];
     }
 }

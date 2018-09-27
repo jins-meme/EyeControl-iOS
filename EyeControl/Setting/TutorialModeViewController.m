@@ -28,7 +28,7 @@
     [self.view addSubview:contentView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, contentView.frame.size.width - 5*2, 44)];
-    titleLabel.text = @"モードの説明";
+    titleLabel.text = NSLocalizedString(@"モードの説明",nil);
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleLabel.textColor = [UIColor darkGrayColor];
@@ -38,7 +38,7 @@
                                                                titleLabel.frame.origin.y + titleLabel.frame.size.height,
                                                                contentView.frame.size.width - 10*2,
                                                                contentView.frame.size.height - (titleLabel.frame.origin.y + titleLabel.frame.size.height + 10 + 50))];
-    label.text = @"【モード1】\n 往復以上（カウント2以上）の強度1で1回、強度2,3で2回反応します\n\n【モード2】\n 往復以上（カウント2以上）強度1,2,3で1回反応します\n\n【モード3】\n往復以上（カウント2以上）強度2,3で1回反応します\n\n【モード4】\n片道以上（カウント1以上）の強度2,3で1回反応します\n\n※強度とは視線を動かした距離を3段階で判別、カウントとは左右または上下に途切れず何回連続で動かしたかにより判定されます。\n※視線移動はノイズにより誤判定が発生しやすい場合があります。あまり頭を動かさず、電極が確実に接地し強く押し付けすぎないように装着してください。";
+    label.text = NSLocalizedString(@"モード1: 往復以上（カウント2以上）の強度1で1回、強度2,3で2回反応します\nモード2: 往復以上（カウント2以上）強度1,2,3で1回反応します\nモード3: 往復以上（カウント2以上）強度2,3で1回反応します\nモード4: 片道以上（カウント1以上）の強度2,3で1回反応します\n※強度とは視線を動かした距離を3段階で判別、カウントとは左右または上下に途切れず何回連続で動かしたかにより判定されます。\n※視線移動はノイズにより誤判定が発生しやすい場合があります。あまり頭を動かさず、電極が確実に接地し強く押し付けすぎないように装着してください。",nil);
     label.numberOfLines = -1;
     label.minimumScaleFactor = 0.5;
     label.adjustsFontSizeToFitWidth = YES;

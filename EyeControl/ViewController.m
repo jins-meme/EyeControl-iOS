@@ -107,7 +107,7 @@
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 20 + 44 + 80, self.view.frame.size.width - 10*2, 20)];
     label.textColor = [UIColor whiteColor];
-    label.text = @"左右の視線移動で選択し、まばたき2回で決定。";
+    label.text = NSLocalizedString(@"左右の視線移動で選択し、まばたき2回で決定。",nil);
     label.font = [UIFont systemFontOfSize:16.0];
     label.textAlignment = NSTextAlignmentCenter;
     label.minimumScaleFactor = 0.5;

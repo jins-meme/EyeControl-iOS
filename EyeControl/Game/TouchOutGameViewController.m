@@ -46,7 +46,7 @@
                                                                     statusH + naviH,
                                                                     self.view.frame.size.width - 20*2,
                                                                     40)];
-    titleLabel.text = @"触れたらアウト！";
+    titleLabel.text = NSLocalizedString(@"触れたらアウト！",nil);
     titleLabel.font = [UIFont boldSystemFontOfSize:16];
     titleLabel.textColor = [Common colorWithHex:@"#ef2880"];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -56,7 +56,7 @@
                                                                           titleLabel.frame.origin.y + titleLabel.frame.size.height,
                                                                           self.view.frame.size.width - 20*2,
                                                                           50)];
-    descriptionLabel.text = @"首を傾けてボールをコントロール！\n落ちてくるボールをかわし続けよう！！";
+    descriptionLabel.text = NSLocalizedString(@"首を傾けてボールをコントロール！\n落ちてくるボールをかわし続けよう！！",nil);
     descriptionLabel.font = [UIFont systemFontOfSize:14];
     descriptionLabel.textColor = [Common colorWithHex:@"#ffffff"];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;

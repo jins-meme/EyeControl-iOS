@@ -1,0 +1,110 @@
+/* 
+  Localizable.strings
+  EyeControl
+
+  Created by Celleus on 2018/09/18.
+  Copyright © 2018年 celleus. All rights reserved.
+*/
+
+"" = "";
+"左右の視線移動で選択し、まばたき2回で決定。" = "Switch with movement, confirm with blink twice.";
+"視線移動強度チェック" = "Eye movement indicator";
+"左右の視線移動で選択し、まばたき2回で決定。" = "Switch with movement, confirm with blink twice.";
+"落ちたらアウト！" = "Let's not fall !";
+"触れたらアウト！" = "Let's not touch !";
+"視線移動強度チェック" = "Eye movement indicator";
+"落ちたらアウト！" = "Let's not fall !";
+"まばたきでボールをジャンプ！\n落ちないようにボールをコントロールしよう！！" = "Jump ball with blink! \n Let's control the ball so as not to fall !";
+"まばたき2回でスタート" = "Blink twice to start";
+"視線移動強度チェック" = "Eye movement indicator";
+"落ちたらアウト！" = "Let's not fall !";
+"まばたきでボールをジャンプ！\n落ちないようにボールをコントロールしよう！！" = "Jump ball with blink! \n Let's control the ball so as not to fall !";
+"ゲームオーバー" = "Game over";
+"スコア" = "Score";
+"ハイスコア" = "High score";
+"タイトル" = "Back to title";
+"もう一度" = "Retry";
+"視線移動強度チェック" = "Eye movement indicator";
+"触れたらアウト！" = "Let's not touch !";
+"首を傾けてボールをコントロール！\n落ちてくるボールをかわし続けよう！！" = "Tilt your head to control the ball! \n Let 's keep dodging the falling ball !";
+"まばたき2回でスタート" = "Blink twice to start";
+"視線移動強度チェック" = "Eye movement indicator";
+"触れたらアウト！" = "Let's not touch !";
+"首を傾けてボールをコントロール！\n落ちてくるボールをかわし続けよう！！" = "Tilt your head to control the ball! \n Let 's keep dodging the falling ball !";
+"ゲームオーバー" = "Game over";
+"スコア" = "Score";
+"ハイスコア" = "High score";
+"タイトル" = "Back to title";
+"もう一度" = "Retry";
+"視線移動強度チェック" = "Eye movement indicator";
+"左右の視線移動で選択し、まばたき2回で決定。" = "Switch with movement, confirm with blink twice.";
+"まばたきシャッター" = "Blink shutter";
+"PDFビューワー" = "PDF viewer";
+"メッセージパネル" = "Messages Panel";
+"視線移動強度チェック" = "Eye movement indicator";
+"まばたきシャッター" = "Blink shutter";
+"視線移動で選択し、まばたき2回で決定" = "Switch with movement, confirm with blink twice.";
+"PDFビューワー" = "PDF viewer";
+"他のアプリからPDFファイルをこのアプリで開き、\nこの画面にPDFファイルを表示してください。" = "Transfer the PDF file from other application to this \n application with \"open with other application\" option.";
+"視線移動でページを送ろう" = "";
+"メッセージパネル" = "Messages Panel";
+"視線移動で選択し、まばたき2回で決定" = "Switch with movement, confirm with blink twice.";
+"パネルの変更" = "Edit label";
+"おはよう" = "Good morning!";
+"調子良い" = "I am in good condition";
+"おなかすいた" = "I am hungry";
+"トイレ" = "I want to go to bethroom";
+"はい" = "Yes";
+"いいえ" = "No";
+"くるしい" = "Painful";
+"ねむい" = "Sleepy";
+"何かよみたい" = "I want to read something";
+"メッセージ" = "Message";
+"消去" = "Clear";
+"視線移動強度チェック" = "Eye movement indicator";
+"チュートリアル" = "Tutorial";
+"モードの説明" = "About movement mode";
+"視線の設定" = "Eye movement settings";
+"視線モード" = "Eye movement";
+"モード1" = "Mode1";
+"モード2" = "Mode2";
+"モード3" = "Mode3";
+"モード4" = "Mode4";
+"連続と判定する間隔" = "Interval for determining continuous";
+"首振りの設定" = "Head movement settings";
+"首振りモード" = "Head movement";
+"連続と判定する間隔" = "Interval for determining continuous";
+"まばたきの設定" = "Blink settings";
+"連続と判定する間隔" = "Interval for determining continuous";
+"パネルの設定" = "Message panel setting";
+"パネルの読み上げ" = "Speech label contents";
+"モード1: 往復以上（カウント2以上）の強度1で1回、強度2,3で2回反応します\nモード2: 往復以上（カウント2以上）強度1,2,3で1回反応します\nモード3: 往復以上（カウント2以上）強度2,3で1回反応します\nモード4: 片道以上（カウント1以上）の強度2,3で1回反応します\n※強度とは視線を動かした距離を3段階で判別、カウントとは左右または上下に途切れず何回連続で動かしたかにより判定されます。\n※視線移動はノイズにより誤判定が発生しやすい場合があります。あまり頭を動かさず、電極が確実に接地し強く押し付けすぎないように装着してください。" = "Mode 1: It reacts once with an intensity 1 of round-trip or more (count 2 or more) and twice with intensity 2 and 3\nMode 2: Round-trip or more (count 2 or more) It reacts once with intensity 1, 2, 3\nMode 3: Round trip or more (count 2 or more) Reacts once with intensity 2, 3\nMode 4: It reacts once with intensity 2 or 3 at more than one way (count 1 or more)\n※ Strength means the degrees that moved the line of sight is distinguished in three stages, counting means judged by how many times it has been continuously moved left / right or up / down.\n* Misjudgement may be easily caused by noise due to eye movement. Please do not move your head too much, please install so that the electrode surely contacts the ground and does not press too strongly.\n";
+"閉じる" = "Close";
+"青点滅するまで電源ボタンを長押ししてください" = "Keep pressing power button until led blinks";
+"接続するJINS MEMEを選択してください" = "Select JINS MEME to connect";
+"もう一度接続" = "Try again";
+"見つからなかった場合" = "If not found";
+"接続中" = "Connecting...";
+"接続中のJINS MEME" = "Connected JINS MEME";
+"JINS MEMEと接続解除する" = "Disconnect to JINS MEME";
+"完了" = "Connected";
+"閉じる" = "Close";
+"端末のBluetoothをオンにしてください" = "Please turn on Bluetooth on your device";
+"エラー" = "Error";
+"MEMEとの接続に失敗しました。MEMEが接続可能な状態かお確かめください。" = "Failed to connect to MEME. Make sure that MEME is ready for connection.";
+"MEMEとの接続が切れました" = "Disconnected to JINS MEME";
+"既にMEMEと接続しています" = "Already connected to MEME";
+"戻りますか？" = "Are you sure to back?";
+"はい" = "YES";
+"いいえ" = "NO";
+
+
+"icon_start.png" = "icon_start_EN.png";
+"camera_icon_change.png" = "camera_icon_change_EN.png";
+"camera_icon_change_selected.png" = "camera_icon_change_selected_EN.png";
+"camera_icon_shoot.png" = "camera_icon_shoot_EN.png";
+"camera_icon_shoot_selected.png" = "camera_icon_shoot_selected_EN.png";
+"camera_icon_finish.png" = "camera_icon_finish_EN.png";
+"camera_icon_finish_selected.png" = "camera_icon_finish_selected_EN.png";
+"pdf_icon_forward.png" = "pdf_icon_forward_EN.png";
+"pdf_icon_back.png" = "pdf_icon_back_EN.png";

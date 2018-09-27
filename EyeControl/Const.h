@@ -20,10 +20,16 @@
 #define EYE_SWITCH          @"eyeSwitch"
 #define NECK_SWITCH         @"neckSwitch"
 #define EYE_MOVE_MODE       @"eyeMoveMode"
+#define READ_SWITCH         @"readSwitch"
+
+
 
 #define ORIGINAL_PANEL_2    @"originalPanel2"
 
 #define FALL_OUT_HIGH_SCORE         @"fall_out_high_score"
 #define TOUCH_OUT_HIGH_SCORE        @"touch_out_high_score"
+
+#define PDF_URL             @"pdfURL"
+#define PDF_PAGE_COUNT      @"pdfPageCount"
 
 #endif /* Const_h */

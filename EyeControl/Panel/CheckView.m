@@ -22,7 +22,7 @@
                                                                    0,
                                                                    self.frame.size.width - 20*2,
                                                                    labelH)];
-        label.text = @"視線移動強度チェック";
+        label.text = NSLocalizedString(@"視線移動強度チェック",nil);
         label.font = [UIFont systemFontOfSize:12];
         label.textColor = [Common colorWithHex:@"#ffffff"];
         label.textAlignment = NSTextAlignmentCenter;

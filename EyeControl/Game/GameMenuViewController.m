@@ -70,7 +70,7 @@
             label.textColor = [Common colorWithHex:@"#ffffff"];
         }
         else if (i == 1) {
-            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: @"落ちたらアウト！"];
+            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: NSLocalizedString(@"落ちたらアウト！",nil)];
             [attributedText addAttribute:NSKernAttributeName
                                    value:[NSNumber numberWithFloat:5]
                                    range:NSMakeRange(0, attributedText.length)];
@@ -78,7 +78,7 @@
             label.textColor = [Common colorWithHex:@"#ef2880"];
         }
         else if (i == 2) {
-            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: @"触れたらアウト！"];
+            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString: NSLocalizedString(@"触れたらアウト！",nil)];
             [attributedText addAttribute:NSKernAttributeName
                                    value:[NSNumber numberWithFloat:5]
                                    range:NSMakeRange(0, attributedText.length)];
@@ -90,7 +90,7 @@
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 20 + 44 + 80, self.view.frame.size.width - 10*2, 20)];
     label.textColor = [UIColor whiteColor];
-    label.text = @"左右の視線移動で選択し、まばたき2回で決定。";
+    label.text = NSLocalizedString(@"左右の視線移動で選択し、まばたき2回で決定。",nil);
     label.font = [UIFont systemFontOfSize:16.0];
     label.textAlignment = NSTextAlignmentCenter;
     label.minimumScaleFactor = 0.5;
@@ -139,7 +139,6 @@
     rightButton.enabled = NO;
     [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x + scrollView.frame.size.width, 0) animated:YES];
 }
-
 
 - (void)fallOut {
     DLog(@"fallOut")

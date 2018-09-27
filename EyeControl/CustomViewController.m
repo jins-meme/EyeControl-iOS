@@ -114,6 +114,11 @@
     }
 }
 
+- (BOOL)shouldAutorotate {
+    DLog(@"shouldAutorotate")
+    return NO;
+}
+
 //**************************************************
 // MEMEManagerPairingDelegate
 //**************************************************

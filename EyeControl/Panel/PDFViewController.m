@@ -8,7 +8,13 @@
 
 #import "PDFViewController.h"
 
-@interface PDFViewController () <MEMEManagerRealTimeModeDataDelegate,EyeMoveManagerDelegate,NeckManagerDelegate,UIWebViewDelegate,UIScrollViewDelegate>
+@interface PDFViewController () <MEMEManagerRealTimeModeDataDelegate,EyeMoveManagerDelegate,NeckManagerDelegate,UIWebViewDelegate,UIScrollViewDelegate> {
+    UILabel *titleLabel;
+    UILabel *noneLabel;
+    UILabel *descriptionLabel;
+    UIButton *backButton;
+    UIButton *forwardButton;
+}
 
 @end
 
@@ -18,83 +24,247 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,
-                                                                    statusH + naviH,
-                                                                    self.view.frame.size.width - 20*2,
-                                                                    40)];
-    titleLabel.text = @"PDFビューワー";
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,
+                                                           statusH + naviH,
+                                                           self.view.frame.size.width - 20*2,
+                                                           40)];
+    titleLabel.text = NSLocalizedString( @"PDFビューワー",nil);
     titleLabel.font = [UIFont boldSystemFontOfSize:16];
     titleLabel.textColor = [Common colorWithHex:@"#52d0b0"];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
     
-    CGFloat labelH = 40;
+    CGFloat labelH = 30;
+    CGFloat labelM = 10;
     CGFloat buttonH = 70;
-    CGFloat bottomM = 10;
+    CGFloat bottonM = 10;
     
-    UILabel *noneLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,
-                                                                   titleLabel.frame.origin.y + titleLabel.frame.size.height,
-                                                                   self.view.frame.size.width - 20*2,
-                                                                   self.view.frame.size.height - (titleLabel.frame.origin.y + titleLabel.frame.size.height +
-                                                                                                  + buttonH + safeAreaBottom))];
-    noneLabel.text = @"他のアプリからPDFファイルをこのアプリで開き、\nこの画面にPDFファイルを表示してください。";
+    noneLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,
+                                                          titleLabel.frame.origin.y + titleLabel.frame.size.height,
+                                                          self.view.frame.size.width - 20*2,
+                                                          self.view.frame.size.height - (titleLabel.frame.origin.y + titleLabel.frame.size.height + labelH + labelM + buttonH + safeAreaBottom))];
+    noneLabel.text = NSLocalizedString( @"他のアプリからPDFファイルをこのアプリで開き、\nこの画面にPDFファイルを表示してください。",nil);
     noneLabel.font = [UIFont systemFontOfSize:14];
     noneLabel.textColor = [Common colorWithHex:@"#52d0b0"];
     noneLabel.numberOfLines = -1;
     noneLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:noneLabel];
     
+    descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,
+                                                                 self.view.frame.size.height - (labelH + labelM + buttonH + safeAreaBottom),
+                                                                 self.view.frame.size.width - 20*2,
+                                                                 labelH)];
+    descriptionLabel.text = NSLocalizedString( @"視線移動でページを送ろう",nil);
+    descriptionLabel.font = [UIFont systemFontOfSize:16];
+    descriptionLabel.textColor = [Common colorWithHex:@"#52d0b0"];
+    descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:descriptionLabel];
+    
+    backButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
+                                                            descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + labelM,
+                                                            self.view.frame.size.width / 2,
+                                                            buttonH)];
+    [backButton setImage:[UIImage imageNamed:NSLocalizedString(@"pdf_icon_back.png",nil)] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backButton];
+    
+    forwardButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2,
+                                                               descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + labelM,
+                                                               self.view.frame.size.width / 2,
+                                                               buttonH)];
+    [forwardButton setImage:[UIImage imageNamed:NSLocalizedString(@"pdf_icon_forward.png",nil)] forState:UIControlStateNormal];
+    [forwardButton addTarget:self action:@selector(go) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:forwardButton];
+    
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,
-                                                               titleLabel.frame.origin.y + titleLabel.frame.size.height,
-                                                               self.view.bounds.size.width,
-                                                               self.view.frame.size.height - (titleLabel.frame.origin.y + titleLabel.frame.size.height + labelH + buttonH + safeAreaBottom + bottomM))];
+                                                               statusH + naviH,
+                                                               self.view.frame.size.width,
+                                                               self.view.frame.size.height - (statusH + naviH))];
+    self.webView.backgroundColor = [UIColor clearColor];
+    self.webView.scrollView.backgroundColor = [UIColor clearColor];
     self.webView.delegate = self;
     self.webView.scrollView.delegate = self;
     self.webView.scrollView.showsVerticalScrollIndicator = NO;
     self.webView.scrollView.showsHorizontalScrollIndicator = NO;
     [self.webView.scrollView setTag:noDisableHorizontalScrollTag];
     [self.webView.scrollView setTag:noDisableVerticalScrollTag];
-    self.webView.hidden = YES;
     [self.view addSubview:self.webView];
-    
-    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,
-                                                                          self.webView.frame.origin.y + self.webView.frame.size.height,
-                                                                          self.view.frame.size.width - 20*2,
-                                                                          labelH)];
-    descriptionLabel.text = @"視線移動でページを送ろう";
-    descriptionLabel.font = [UIFont systemFontOfSize:16];
-    descriptionLabel.textColor = [Common colorWithHex:@"#52d0b0"];
-    descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:descriptionLabel];
-    
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
-                                                                      descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height,
-                                                                      self.view.frame.size.width / 2,
-                                                                      buttonH)];
-    [backButton setImage:[UIImage imageNamed:@"pdf_icon_back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backButton];
-    
-    UIButton *forwardButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2,
-                                                                         descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height,
-                                                                         self.view.frame.size.width / 2,
-                                                                         buttonH)];
-    [forwardButton setImage:[UIImage imageNamed:@"pdf_icon_forward.png"] forState:UIControlStateNormal];
-    [forwardButton addTarget:self action:@selector(go) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:forwardButton];
 
+    NSString *pdfUrlString = [Common getUserDefaultsForKey:PDF_URL];
+    if (pdfUrlString) {
+        DLog(@"pdfUrlString:%@",pdfUrlString);
+        self.pdfPageCount = [[Common getUserDefaultsForKey:PDF_PAGE_COUNT] intValue];
+
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:pdfUrlString]];
+        [self.webView loadRequest:request];
+
+        self.webView.hidden = NO;
+        
+        titleLabel.hidden = YES;
+        noneLabel.hidden = YES;
+        descriptionLabel.hidden = YES;
+        backButton.hidden = YES;
+        forwardButton.hidden = YES;
+    }
+    else {
+        self.webView.hidden = YES;
+        
+        titleLabel.hidden = NO;
+        noneLabel.hidden = NO;
+        descriptionLabel.hidden = NO;
+        backButton.hidden = NO;
+        forwardButton.hidden = NO;
+    }
+}
+
+- (BOOL)shouldAutorotate {
+    DLog(@"shouldAutorotate")
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    DLog(@"supportedInterfaceOrientations");
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
+    DLog(@"willAnimateRotationToInterfaceOrientation interfaceOrientation%ld duration:%f",(long)interfaceOrientation,duration)
+    
+    if(interfaceOrientation == UIInterfaceOrientationPortrait){
+        // 縦（ホームボタンが下）
+        DLog(@"UIInterfaceOrientationPortrait")
+        [self layoutPortraitPortraitUpsideDown];
+    }
+    else if(interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
+        // 縦（ホームボタンが上）
+        DLog(@"UIInterfaceOrientationPortraitUpsideDown")
+        [self layoutPortraitPortraitUpsideDown];
+    }
+    else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft){
+        // 横（ホームボタンが左）
+        DLog(@"UIInterfaceOrientationLandscapeLeft")
+        [self layoutLeftRight];
+    }
+    else if(interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        // 横（ホームボタン右）
+        DLog(@"UIInterfaceOrientationLandscapeRight")
+        [self layoutLeftRight];
+    }
+}
+
+- (void)layoutPortraitPortraitUpsideDown{
+    DLog(@"layoutPortraitPortraitUpsideDown");
+    CGFloat labelH = 30;
+    CGFloat labelM = 10;
+    CGFloat buttonH = 70;
+    CGFloat bottonM = 10;
+    
+    titleLabel.frame = CGRectMake(20,
+                                  statusH + naviH,
+                                  self.view.frame.size.width - 20*2,
+                                  40);
+    
+    noneLabel.frame = CGRectMake(20,
+                                 titleLabel.frame.origin.y + titleLabel.frame.size.height,
+                                 self.view.frame.size.width - 20*2,
+                                 self.view.frame.size.height - (titleLabel.frame.origin.y + titleLabel.frame.size.height + labelH + labelM + buttonH + safeAreaBottom));
+    
+    descriptionLabel.frame = CGRectMake(20,
+                                        self.view.frame.size.height - (labelH + labelM + buttonH + safeAreaBottom),
+                                        self.view.frame.size.width - 20*2,
+                                        labelH);
+    backButton.frame = CGRectMake(0,
+                                  descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + labelM,
+                                  self.view.frame.size.width / 2,
+                                  buttonH);
+    forwardButton.frame = CGRectMake(self.view.frame.size.width / 2,
+                                     descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + labelM,
+                                     self.view.frame.size.width / 2,
+                                     buttonH);
+    
+    self.webView.frame = CGRectMake(0,
+                                    statusH + naviH,
+                                    self.view.frame.size.width,
+                                    self.view.frame.size.height - (statusH + naviH));
+}
+
+- (void)layoutLeftRight {
+    DLog(@"layoutLeftRight");
+    CGFloat labelH = 30;
+    CGFloat labelM = 10;
+    CGFloat buttonH = 70;
+    CGFloat bottonM = 10;
+    
+    titleLabel.frame = CGRectMake(20,
+                                  naviH/3*2,
+                                  self.view.frame.size.width - 20*2,
+                                  40);
+    
+    noneLabel.frame = CGRectMake(20,
+                                 titleLabel.frame.origin.y + titleLabel.frame.size.height,
+                                 self.view.frame.size.width - 20*2,
+                                 self.view.frame.size.height - (titleLabel.frame.origin.y + titleLabel.frame.size.height + labelH + labelM + buttonH + safeAreaBottom));
+    
+    descriptionLabel.frame = CGRectMake(20,
+                                        self.view.frame.size.height - (labelH + labelM + buttonH + safeAreaBottom),
+                                        self.view.frame.size.width - 20*2,
+                                        labelH);
+    backButton.frame = CGRectMake(0,
+                                  descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + labelM,
+                                  self.view.frame.size.width / 2,
+                                  buttonH);
+    forwardButton.frame = CGRectMake(self.view.frame.size.width / 2,
+                                     descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + labelM,
+                                     self.view.frame.size.width / 2,
+                                     buttonH);
+    
+    self.webView.frame = CGRectMake(safeAreaTop,
+                                    naviH/3*2,
+                                    self.view.frame.size.width - (safeAreaTop + safeAreaTop),
+                                    self.view.frame.size.height - (naviH/2 + safeAreaBottom));
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if (self.pdfURL != nil && self.webView.hidden == YES) {
+    if (self.pdfURL != nil) {
+        DLog(@"self.pdfURL:%@",self.pdfURL)
+        
+        // PDFをNSDataに変換し、その後.pdfとしてドキュメントフォルダに保存 ----- -----
+        NSData *pdfData = [NSData dataWithContentsOfURL:self.pdfURL];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
+        NSString *dir = [paths objectAtIndex:0];
+        dir = [dir stringByAppendingPathComponent:@"pdf"];
+
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if (![fileManager fileExistsAtPath:dir]) {
+            [fileManager createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+        
+        NSString *path = [dir stringByAppendingPathComponent:@"tmp.pdf"];
+        [pdfData writeToFile:path atomically:YES];
+        
+        DLog(@"path:%@",path)
+        
+        [Common setUserDefaults:path forKey:PDF_URL];
+        // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+        
         CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL((CFURLRef)self.pdfURL);
         self.pdfPageCount = (int)CGPDFDocumentGetNumberOfPages(pdf);
         
+         [Common setUserDefaults:[NSNumber numberWithInt:self.pdfPageCount] forKey:PDF_PAGE_COUNT];
+        
         NSURLRequest *request = [NSURLRequest requestWithURL:self.pdfURL];
         [self.webView loadRequest:request];
+        
         self.webView.hidden = NO;
+        
+        titleLabel.hidden = YES;
+        noneLabel.hidden = YES;
+        descriptionLabel.hidden = YES;
+        backButton.hidden = YES;
+        forwardButton.hidden = YES;
         
         self.pdfURL = nil;
     }

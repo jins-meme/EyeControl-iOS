@@ -38,7 +38,7 @@
                                                                view.frame.size.width-10*2,
                                                                view.frame.size.height/2)];
     label.textColor = [UIColor darkGrayColor];
-    label.text = @"戻りますか？";
+    label.text = NSLocalizedString(@"戻りますか？",nil);
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont boldSystemFontOfSize:18];
     [view addSubview:label];
@@ -47,7 +47,7 @@
                                                           view.frame.size.height/2,
                                                           view.frame.size.width/2,
                                                           view.frame.size.height/2)];
-    [noButton setTitle:@"いいえ" forState:UIControlStateNormal];
+    [noButton setTitle:NSLocalizedString(@"いいえ",nil) forState:UIControlStateNormal];
     [noButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [noButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [noButton addTarget:self action:@selector(noTouch) forControlEvents:UIControlEventTouchUpInside];
@@ -58,7 +58,7 @@
                                                           view.frame.size.height/2,
                                                           view.frame.size.width/2,
                                                           view.frame.size.height/2)];
-    [yesButton setTitle:@"はい" forState:UIControlStateNormal];
+    [yesButton setTitle:NSLocalizedString(@"はい",nil) forState:UIControlStateNormal];
     [yesButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [yesButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [yesButton addTarget:self action:@selector(yesTouch) forControlEvents:UIControlEventTouchUpInside];
@@ -174,7 +174,7 @@
     
     [[MEMEManager sharedInstance].peripherals removeAllObjects];
     
-    [self alert:@"MEMEとの接続が切れました" message:@""];
+    [self alert:NSLocalizedString(@"MEMEとの接続が切れました",nil) message:@""];
 }
 
 //**************************************************

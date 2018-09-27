@@ -32,7 +32,7 @@
     gameoverLabel.textColor = [Common colorWithHex:@"#ef2880"];
     gameoverLabel.textAlignment = NSTextAlignmentCenter;
     gameoverLabel.font = [UIFont boldSystemFontOfSize:25];
-    gameoverLabel.text = @"ゲームオーバー";
+    gameoverLabel.text = NSLocalizedString(@"ゲームオーバー",nil);
     [self.view addSubview:gameoverLabel];
     
     // スコア
@@ -44,7 +44,7 @@
     scoreLable.textColor = [Common colorWithHex:@"#ef2880"];
     scoreLable.textAlignment = NSTextAlignmentCenter;
     scoreLable.font = [UIFont systemFontOfSize:20];
-    scoreLable.text = @"スコア";
+    scoreLable.text = NSLocalizedString(@"スコア",nil);
     [self.view addSubview:scoreLable];
     
     UILabel *scoreLable_ = [[UILabel alloc] initWithFrame:CGRectMake(20,
@@ -67,7 +67,7 @@
     highScoreLabel.textColor = [Common colorWithHex:@"#ef2880"];
     highScoreLabel.textAlignment = NSTextAlignmentCenter;
     highScoreLabel.font = [UIFont systemFontOfSize:20];
-    highScoreLabel.text = @"ハイスコア";
+    highScoreLabel.text = NSLocalizedString(@"ハイスコア",nil);
     [self.view addSubview:highScoreLabel];
     
     UILabel *highScoreLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(20,
@@ -97,7 +97,7 @@
     backButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     backButton.layer.borderWidth = 2;
     backButton.titleLabel.font = [UIFont systemFontOfSize:18];
-    [backButton setTitle:@"タイトル" forState:UIControlStateNormal];
+    [backButton setTitle:NSLocalizedString(@"タイトル",nil) forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(gameBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
@@ -114,7 +114,7 @@
     replayButton.layer.borderColor = [[Common colorWithHex:@"#ef2880"] CGColor];
     replayButton.layer.borderWidth = 2;
     replayButton.titleLabel.font = [UIFont systemFontOfSize:18];
-    [replayButton setTitle:@"もう一度" forState:UIControlStateNormal];
+    [replayButton setTitle:NSLocalizedString(@"もう一度",nil) forState:UIControlStateNormal];
     [replayButton setTitleColor:[Common colorWithHex:@"#ef2880"] forState:UIControlStateNormal];
     [replayButton addTarget:self action:@selector(gameReplay) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:replayButton];

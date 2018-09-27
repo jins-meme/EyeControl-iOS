@@ -61,7 +61,7 @@
                                                                     statusH + naviH,
                                                                     self.view.frame.size.width - 20*2,
                                                                     40)];
-    titleLabel.text = @"まばたきシャッター";
+    titleLabel.text = NSLocalizedString( @"まばたきシャッター",nil);
     titleLabel.font = [UIFont boldSystemFontOfSize:16];
     titleLabel.textColor = [Common colorWithHex:@"#52d0b0"];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -77,17 +77,20 @@
                                                                           0,
                                                                           self.view.frame.size.width - 20*2,
                                                                           50)];
-    descriptionLabel.text = @"視線移動で選択し、まばたき2回で決定";
+    descriptionLabel.text = NSLocalizedString( @"視線移動で選択し、まばたき2回で決定",nil);
     descriptionLabel.font = [UIFont systemFontOfSize:16];
     descriptionLabel.textColor = [Common colorWithHex:@"#52d0b0"];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    descriptionLabel.numberOfLines = 2;
+    descriptionLabel.minimumScaleFactor = 0.5;
+    descriptionLabel.adjustsFontSizeToFitWidth = YES;
     [view addSubview:descriptionLabel];
     
     changeDeviceButton = [[UIButton alloc] initWithFrame:CGRectMake((view.frame.size.width / 3) * 0,
                                                                     descriptionLabel.frame.size.height,
                                                                     view.frame.size.width / 3,
                                                                     view.frame.size.height - (descriptionLabel.frame.size.height + safeAreaBottom))];
-    [changeDeviceButton setImage:[UIImage imageNamed:@"camera_icon_change.png"] forState:UIControlStateNormal];
+    [changeDeviceButton setImage:[UIImage imageNamed:NSLocalizedString(@"camera_icon_change.png",nil)] forState:UIControlStateNormal];
     [changeDeviceButton addTarget:self action:@selector(changeDevice) forControlEvents:UIControlEventTouchUpInside];
     changeDeviceButton.imageView.contentMode = UIViewContentModeCenter;
     [view addSubview:changeDeviceButton];
@@ -97,7 +100,7 @@
                                                                view.frame.size.width / 3,
                                                                view.frame.size.height - (descriptionLabel.frame.size.height + safeAreaBottom))];
     [shutterButton addTarget:self action:@selector(savePhoto) forControlEvents:UIControlEventTouchUpInside];
-    [shutterButton setImage:[UIImage imageNamed:@"camera_icon_shoot.png"] forState:UIControlStateNormal];
+    [shutterButton setImage:[UIImage imageNamed:NSLocalizedString(@"camera_icon_shoot.png",nil)] forState:UIControlStateNormal];
     shutterButton.imageView.contentMode = UIViewContentModeCenter;
     [view addSubview:shutterButton];
     
@@ -105,7 +108,7 @@
                                                             descriptionLabel.frame.size.height,
                                                             view.frame.size.width / 3,
                                                             view.frame.size.height - (descriptionLabel.frame.size.height + safeAreaBottom))];
-    [backButton setImage:[UIImage imageNamed:@"camera_icon_finish.png"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:NSLocalizedString(@"camera_icon_finish.png",nil)] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(pop) forControlEvents:UIControlEventTouchUpInside];
     backButton.imageView.contentMode = UIViewContentModeCenter;
     [view addSubview:backButton];
@@ -138,18 +141,18 @@
 - (void)selectButton {
     DLog(@"selectButton")
     
-    [changeDeviceButton setImage:[UIImage imageNamed:@"camera_icon_change.png"] forState:UIControlStateNormal];
-    [shutterButton setImage:[UIImage imageNamed:@"camera_icon_shoot.png"] forState:UIControlStateNormal];
-    [backButton setImage:[UIImage imageNamed:@"camera_icon_finish.png"] forState:UIControlStateNormal];
+    [changeDeviceButton setImage:[UIImage imageNamed:NSLocalizedString(@"camera_icon_change.png",nil)] forState:UIControlStateNormal];
+    [shutterButton setImage:[UIImage imageNamed:NSLocalizedString(@"camera_icon_shoot.png",nil)] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:NSLocalizedString(@"camera_icon_finish.png",nil)] forState:UIControlStateNormal];
     
     if (selectbutton == changeDeviceButton) {
-        [changeDeviceButton setImage:[UIImage imageNamed:@"camera_icon_change_selected.png"] forState:UIControlStateNormal];
+        [changeDeviceButton setImage:[UIImage imageNamed:NSLocalizedString(@"camera_icon_change_selected.png",nil)] forState:UIControlStateNormal];
     }
     else if (selectbutton == shutterButton) {
-        [shutterButton setImage:[UIImage imageNamed:@"camera_icon_shoot_selected.png"] forState:UIControlStateNormal];
+        [shutterButton setImage:[UIImage imageNamed:NSLocalizedString(@"camera_icon_shoot_selected.png",nil)] forState:UIControlStateNormal];
     }
     else if (selectbutton == backButton) {
-        [backButton setImage:[UIImage imageNamed:@"camera_icon_finish_selected.png"] forState:UIControlStateNormal];
+        [backButton setImage:[UIImage imageNamed:NSLocalizedString(@"camera_icon_finish_selected.png",nil)] forState:UIControlStateNormal];
     }
 }
 

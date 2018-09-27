@@ -202,7 +202,12 @@ static MEMEManager *sharedInstance_ = nil;
 //    DLog(@"memeRealTimeModeDataReceived:%@",[data description]);
     
     if ([self.realTimeModeDataDelegate respondsToSelector:@selector(memeRealTimeModeDataReceived:)]) {
-        [self.realTimeModeDataDelegate memeRealTimeModeDataReceived:data];
+        
+        // アプリがフォアアクティッブの時のみ
+        if (UIApplicationStateActive == [[UIApplication sharedApplication] applicationState]) {
+            [self.realTimeModeDataDelegate memeRealTimeModeDataReceived:data];
+        }
+    
     }
 }
 

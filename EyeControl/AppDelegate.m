@@ -26,15 +26,12 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    
     // MEMEの初期設定
     [MEMEManager sharedInstance];
     [MEMEManager setAppClientId:MEME_APP_CLIENT_ID clientSecret:MEME_CLIENT_SECRET];
     
-    
     // 設定関連の初期値の設定
     [self initSetting];
-    
     
     viewController =  [[ViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
@@ -111,6 +108,10 @@
         [Common setUserDefaults:[NSNumber numberWithBool:NO] forKey:NECK_SWITCH];
     }
     
+    if (![Common getUserDefaultsForKey:READ_SWITCH]) {
+        [Common setUserDefaults:[NSNumber numberWithBool:NO] forKey:NECK_SWITCH];
+    }
+    
     if (![Common getUserDefaultsForKey:EYE_MOVE_MODE]) {
         [Common setUserDefaults:[NSNumber numberWithInt:2] forKey:EYE_MOVE_MODE];
     }
@@ -119,19 +120,19 @@
         NSMutableArray *buttonTitleArray = [[NSMutableArray alloc] init];
         
         NSMutableArray *array1 = [[NSMutableArray alloc] init];
-        [array1 addObject:@"おはよう"];
-        [array1 addObject:@"調子良い"];
-        [array1 addObject:@"おなかすいた"];
+        [array1 addObject:NSLocalizedString(@"おはよう",nil)];
+        [array1 addObject:NSLocalizedString(@"調子良い",nil)];
+        [array1 addObject:NSLocalizedString(@"おなかすいた",nil)];
         
         NSMutableArray *array2 = [[NSMutableArray alloc] init];
-        [array2 addObject:@"トイレ"];
-        [array2 addObject:@"はい"];
-        [array2 addObject:@"いいえ"];
+        [array2 addObject:NSLocalizedString(@"トイレ",nil)];
+        [array2 addObject:NSLocalizedString(@"はい",nil)];
+        [array2 addObject:NSLocalizedString(@"いいえ",nil)];
         
         NSMutableArray *array3 = [[NSMutableArray alloc] init];
-        [array3 addObject:@"くるしい"];
-        [array3 addObject:@"ねむい"];
-        [array3 addObject:@"何かよみたい"];
+        [array3 addObject:NSLocalizedString(@"くるしい",nil)];
+        [array3 addObject:NSLocalizedString(@"ねむい",nil)];
+        [array3 addObject:NSLocalizedString(@"何かよみたい",nil)];
         
         [buttonTitleArray addObject:array1];
         [buttonTitleArray addObject:array2];

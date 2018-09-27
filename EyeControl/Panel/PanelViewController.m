@@ -59,7 +59,7 @@
                                                                     statusH + naviH,
                                                                     self.view.frame.size.width - 20*2,
                                                                     40)];
-    titleLabel.text = @"メッセージパネル";
+    titleLabel.text = NSLocalizedString( @"メッセージパネル",nil);
     titleLabel.font = [UIFont boldSystemFontOfSize:16];
     titleLabel.textColor = [Common colorWithHex:@"#52d0b0"];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -69,7 +69,7 @@
                                                                           titleLabel.frame.origin.y + titleLabel.frame.size.height,
                                                                           self.view.frame.size.width - 20*2,
                                                                           30)];
-    descriptionLabel.text = @"左右の視線移動で選択し、まばたき2回で決定。";
+    descriptionLabel.text = NSLocalizedString( @"左右の視線移動で選択し、まばたき2回で決定。",nil);
     descriptionLabel.font = [UIFont systemFontOfSize:14];
     descriptionLabel.textColor = [Common colorWithHex:@"#ffffff"];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
@@ -97,7 +97,7 @@
                                                                       originalPanelView.frame.origin.y + originalPanelView.frame.size.height,
                                                                       self.view.frame.size.width - 20*2,
                                                                       labelH)];
-    messageLabel.text = @"メッセージ";
+    messageLabel.text = NSLocalizedString( @"メッセージ",nil);
     messageLabel.font = [UIFont systemFontOfSize:12];
     messageLabel.textColor = [Common colorWithHex:@"#ffffff"];
     messageLabel.textAlignment = NSTextAlignmentCenter;
@@ -125,7 +125,7 @@
                                                              messageLabel.frame.origin.y + messageLabel.frame.size.height,
                                                              50,
                                                              historyH)];
-    [clearButton setTitle:@"消去" forState:UIControlStateNormal];
+    [clearButton setTitle:NSLocalizedString( @"消去",nil) forState:UIControlStateNormal];
     [clearButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [clearButton.layer setBorderWidth:2.0];
     [clearButton.layer setBorderColor:[UIColor whiteColor].CGColor];
@@ -142,7 +142,7 @@
 - (void)changeButtonTitle:(UIButton *)button {
     buttonTitle = button.titleLabel.text;
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Title" message:@"message" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"パネルの変更",nil) message:@"" preferredStyle:UIAlertControllerStyleAlert];
     
     [alert addAction:[UIAlertAction actionWithTitle:@"OK"
                                               style:UIAlertActionStyleDefault
@@ -378,8 +378,10 @@
                 selectButton.backgroundColor = [Common colorWithHex:@"#52d0b0"];
                 selectButton.tag = 1;
                 
-                [self speach:selectButton.titleLabel.text];
-                
+                if ([[Common getUserDefaultsForKey:READ_SWITCH] boolValue]) {
+                    [self speach:selectButton.titleLabel.text];
+                }
+                    
                 historyLabel.text = selectButton.titleLabel.text;
             }
             else {
